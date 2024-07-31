@@ -1,0 +1,55 @@
+  # DoeFamily
+  - user: User:JohnDoe
+    relation: member
+    object: UserGroup:DoeFamily
+  - user: User:JaneDoe
+    relation: member
+    object: UserGroup:DoeFamily
+
+  # DoePhotos
+  - user: User:JaneDoe
+    relation: owner
+    object: Photo:JaneDoe_jpg
+  - user: Album:DoePhotos
+    relation: parent
+    object: Photo:JaneDoe_jpg
+  - user: User:JohnDoe
+    relation: owner
+    object: Photo:JohnDoe_jpg
+  - user: Album:DoePhotos
+    relation: parent
+    object: Photo:JohnDoe_jpg
+  - user: UserGroup:DoeFamily#member
+    relation: viewPhoto
+    object: Album:DoePhotos
+
+  # JaneVacation
+  - user: User:JaneDoe
+    relation: owner
+    object: Photo:nightclub_jpg
+  - user: Album:JaneVacation
+    relation: parent
+    object: Photo:nightclub_jpg
+  - user: User:JaneDoe
+    relation: owner
+    object: Photo:sunset_jpg
+  - user: Album:JaneVacation
+    relation: parent
+    object: Photo:sunset_jpg
+  - user: User:JohnDoe
+    relation: viewPhoto
+    object: Album:JaneVacation
+    condition:
+      name: nonPrivatePhoto
+
+  - user: User:JohnDoe
+    relation: owner
+    object: Photo:Judges_jpg
+  - user: User:JorgeSouza
+    relation: subject
+    object: Photo:Judges_jpg
+
+  # PhotoJudge
+  - user: User:JorgeSouza
+    relation: assignee
+    object: Role:PhotoJudge

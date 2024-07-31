@@ -1,0 +1,98 @@
+{
+  "type": {
+    "PhotoApp::User": {
+      "JaneDoe": {
+        "parents": [
+          {
+            "type": "PhotoApp::UserGroup",
+            "id": "DoeFamily"
+          }
+        ]
+      },
+      "JohnDoe": {
+        "parents": [
+          {
+            "type": "PhotoApp::UserGroup",
+            "id": "DoeFamily"
+          }
+        ]
+      },
+      "JorgeSouza": {
+        "parents": [
+          {
+            "type": "PhotoApp::Role",
+            "id": "PhotoJudge"
+          }
+        ]
+      }
+    },
+    "PhotoApp::Photo": {
+      "JaneDoe.jpg": {
+        "parents": [
+          {
+            "type": "PhotoApp::Album",
+            "id": "DoePhotos"
+          }
+        ],
+        "attrs": {
+          "labels": [],
+          "owner": {
+            "type": "PhotoApp::User",
+            "id": "JaneDoe"
+          }
+        }
+      },
+      "JohnDoe.jpg": {
+        "parents": [
+          {
+            "type": "PhotoApp::Album",
+            "id": "DoePhotos"
+          }
+        ],
+        "attrs": {
+          "labels": [],
+          "owner": {
+            "type": "PhotoApp::User",
+            "id": "JohnDoe"
+          }
+        }
+      },
+      "nightclub.jpg": {
+        "parents": [{ "type": "PhotoApp::Album", "id": "JaneVacation" }],
+        "attrs": {
+          "labels": ["private"],
+          "owner": {
+            "type": "PhotoApp::User",
+            "id": "JaneDoe"
+          }
+        }
+      },
+      "sunset.jpg": {
+        "parents": [{ "type": "PhotoApp::Album", "id": "JaneVacation" }],
+        "attrs": {
+          "labels": ["contest"],
+          "owner": {
+            "type": "PhotoApp::User",
+            "id": "JaneDoe"
+          }
+        }
+      },
+      "Judges.jpg": {
+        "parents": [],
+        "attrs": {
+          "labels": [],
+          "owner": {
+            "type": "PhotoApp::User",
+            "id": "JohnDoe"
+          },
+          "subjects": [
+            {
+              "type": "PhotoApp::User",
+              "id": "JorgeSouza"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+---
+name: PhotoApp
+model_file: ./model.fga
+tuple_file: ./tuples.yaml
+
+tests:
+  # Album JaneVacation
+  - name: JohnDoe view JaneDoe_jpg
+    check:
+      - user: User:JohnDoe
+        object: Photo:JaneDoe_jpg
+        assertions:
+          viewPhoto: true
+          owner: false
+  - name: JaneDoe view JohnDoe_jpg
+    check:
+      - user: User:JaneDoe
+        object: Photo:JohnDoe_jpg
+        assertions:
+          viewPhoto: true
+          owner: false
+  - name: JorgeSouza view JaneDoe_jpg
+    check:
+      - user: User:JorgeSouza
+        object: Photo:JaneDoe_jpg
+        assertions:
+          viewPhoto: false
+  # Album DoePhotos
+  - name: JaneDoe view sunset_jpg
+    check:
+      - user: User:JaneDoe
+        object: Photo:sunset_jpg
+        assertions:
+          viewPhoto: true
+          owner: true
+  - name: JohnDoe view sunset_jpg
+    check:
+      - user: User:JohnDoe
+        object: Photo:sunset_jpg
+        context:
+          labels: ["contest"]
+        assertions:
+          viewPhoto: true
+          owner: false
+  - name: JaneDoe view nightclub_jpg
+    check:
+      - user: User:JaneDoe
+        object: Photo:nightclub_jpg
+        assertions:
+          viewPhoto: true
+          owner: true
+  - name: JohnDoe view nightclub_jpg
+    check:
+      - user: User:JohnDoe
+        object: Photo:nightclub_jpg
+        context:
+          labels: ["private"]
+        assertions:
+          viewPhoto: false
+          owner: false
+  # Photo owner
+  - name: JaneDoe view/edit/delete JaneDoe_jpg
+    check:
+      - user: User:JaneDoe
+        object: Photo:JaneDoe_jpg
+        assertions:
+          viewPhoto: true
+          editPhoto: true
+          deletePhoto: true
+          owner: true
+  - name: JohnDoe view/edit/delete JaneDoe_jpg
+    check:
+      - user: User:JohnDoe
+        object: Photo:JaneDoe_jpg
+        assertions:
+          viewPhoto: true
+          editPhoto: false
+          deletePhoto: false
+          owner: false
+# Role PhotoJudge
+  - name: JorgeSouza view sunset_jpg nosession
+    tuples:
+      - user: Role:PhotoJudge#assignee
+        relation: viewPhoto
+        object: Photo:sunset_jpg
+        condition:
+          name: inJudgingSession
+    check:
+      - user: User:JorgeSouza
+        object: Photo:sunset_jpg
+        context:
+          labels: ["contest"]
+          judgingSession: false
+        assertions:
+          viewPhoto: false
+  - name: JorgeSouza view sunset_jpg session
+    tuples:
+      - user: Role:PhotoJudge#assignee
+        relation: viewPhoto
+        object: Photo:sunset_jpg
+        condition:
+          name: inJudgingSession
+    check:
+      - user: User:JorgeSouza
+        object: Photo:sunset_jpg
+        context:
+          labels: ["contest"]
+          judgingSession: true
+        assertions:
+          viewPhoto: true
+
+# User JorgeSouza
+  - name: JorgeSouza view Judges_jpg
+    check:
+      - user: User:JorgeSouza
+        object: Photo:Judges_jpg
+        assertions:
+          viewPhoto: true
+          subject: true

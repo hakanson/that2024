@@ -1,0 +1,31 @@
+model
+  schema 1.1
+
+type User
+type UserGroup
+  relations
+    define member: [User]
+type Role
+  relations
+    define assignee: [User]
+
+type Photo
+  relations
+    define parent: [Album]
+    define viewPhoto: [User with nonPrivatePhoto, UserGroup#member, Role#assignee with inJudgingSession] or owner or subject or viewPhoto from parent
+    define editPhoto: owner
+    define deletePhoto: owner
+    define owner: [User]
+    define subject: [User]
+
+type Album
+  relations
+    define viewPhoto: [User with nonPrivatePhoto, UserGroup#member]
+
+condition inJudgingSession(judgingSession: bool, labels: list<string>) {
+  judgingSession == true && "contest" in labels
+}
+
+condition nonPrivatePhoto(labels: list<string>) {
+  !("private" in labels)
+}

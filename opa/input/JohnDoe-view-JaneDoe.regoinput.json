@@ -1,0 +1,12 @@
+{
+  "principal": {
+      "type": "PhotoApp::User",
+      "id": "JohnDoe"
+  },
+  "action": "viewPhoto",
+  "resource": {
+      "type": "PhotoApp::Photo",
+      "id": "JaneDoe.jpg"
+  },
+  "context": {}
+}

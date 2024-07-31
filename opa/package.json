@@ -1,0 +1,16 @@
+{
+  "name": "opa-wasm-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "opa test data.json photoapp.rego photoapp_test.rego -v",
+    "vitest": "npx vitest",
+    "build": "opa build -t wasm -e photoapp/is_authorized ./photoapp.rego && tar xzf bundle.tar.gz /policy.wasm"
+  },
+  "author": "hakanson",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@open-policy-agent/opa-wasm": "^1.9.0",
+    "vitest": "^2.0.2"
+  }
+}

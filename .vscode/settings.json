@@ -1,0 +1,30 @@
+{
+  "editor.fontFamily": "Consolas, Menlo, Monaco, 'Courier New', monospace",
+  "json.schemas": [
+    {
+      "fileMatch": ["data.json"],
+      "url": "./opa/schemas/data-schema.json"
+    },
+    {
+      "fileMatch": ["*.regoinput.json"],
+      "url": "./opa/schemas/regoinput-schema.json"
+    }
+  ],
+  "[cedar]": {
+    "editor.tabSize": 2,
+    "editor.wordWrapColumn": 80,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "cedar-policy.vscode-cedar",    
+  },
+  "cedar.schemaFile": "cedar/cedarschema",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    // tell the ESLint plugin to run on save
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+  },
+}

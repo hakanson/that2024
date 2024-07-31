@@ -1,0 +1,14 @@
+{
+  "principal": {
+      "type": "PhotoApp::User",
+      "id": "JorgeSouza"
+  },
+  "action": "viewPhoto",
+  "resource": {
+      "type": "PhotoApp::Photo",
+      "id": "sunset.jpg"
+  },
+  "context": {
+      "judgingSession": true
+  }
+}

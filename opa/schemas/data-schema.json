@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Structure of the data passed into photoapp rego rules",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "object",
+      "patternProperties": {
+        "^PhotoApp::(User|UserGroup|Role|Photo|Album)$": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": "object",
+              "properties": {
+                "parents": {
+                  "$ref": "#/$defs/entityArrayDef"
+                },
+                "attrs": {
+                  "type": "object",
+                  "properties": {
+                    "labels": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "owner": {
+                      "$ref": "#/$defs/entityDef"
+                    },
+                    "subjects": {
+                      "$ref": "#/$defs/entityArrayDef"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": ["parents"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["type"],
+  "$defs": {
+    "entityDef": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "id"]
+    },
+    "entityArrayDef": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entityDef"
+      }
+    }
+  }
+}

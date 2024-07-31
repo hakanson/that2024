@@ -1,0 +1,17 @@
+{
+  "name": "cedar-wasm-test",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "scripts": {
+    "test": "npx vitest"
+  },
+  "author": "hakanson",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@cedar-policy/cedar-wasm": "^3.2.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "vitest": "^2.0.4"
+  }
+}
