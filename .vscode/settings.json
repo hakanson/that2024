@@ -16,7 +16,7 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "cedar-policy.vscode-cedar",    
   },
-  "cedar.schemaFile": "cedar/cedarschema",
+  "cedar.schemaFile": "cedar/cedarschema.json",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
