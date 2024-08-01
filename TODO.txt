@@ -1,7 +1,0 @@
-
-- cedar test runner in node
- - use https://toml.io/en/v1.0.0 / https://www.npmjs.com/package/smol-toml
-- finish README
-- push code to GitHub
-- export deck to PDF
-- pulse survey and QR in deck
